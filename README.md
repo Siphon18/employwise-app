@@ -1,70 +1,193 @@
-# Getting Started with Create React App
+EmployWise Front End Assignment
+A React application that integrates with the Reqres API to perform basic user management functions: Login, List Users, Edit Users, Delete Users, and Update User Avatars (simulated). The application features a modern UI using Tailwind CSS.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table of Contents
+Features
 
-## Available Scripts
+Prerequisites
 
-In the project directory, you can run:
+Getting Started
 
-### `npm start`
+Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Running Locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Project Structure
 
-### `npm test`
+Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Login
 
-### `npm run build`
+Users List
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Edit User
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Delete User
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Avatar Updates
 
-### `npm run eject`
+Scripts
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Additional Notes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Features
+Login Page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Uses POST /api/login from Reqres.
 
-## Learn More
+Email: eve.holt@reqres.in
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Password: cityslicka
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Stores token in localStorage.
 
-### Code Splitting
+Private Routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Users can only access /users or /edit/:id if they have a valid token in localStorage.
 
-### Analyzing the Bundle Size
+Otherwise, they are redirected to the /login page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+List All Users
 
-### Making a Progressive Web App
+Fetches paginated user data from GET /api/users?page={page}.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Displays first name, last name, and avatar.
 
-### Advanced Configuration
+Pagination buttons to move between pages.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Edit User
 
-### Deployment
+Uses PUT /api/users/{id} to simulate updates.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Allows changing first name, last name, email, and avatar (locally).
 
-### `npm run build` fails to minify
+Delete User
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Uses DELETE /api/users/{id} to remove a user.
+
+Updates local state to reflect deletion immediately.
+
+Modern UI
+
+Built with Tailwind CSS for a responsive and clean design.
+
+Password visibility toggle (eye icon) on the login page.
+
+Subtle animations and hover effects.
+
+Prerequisites
+Node.js (v14 or higher recommended)
+
+npm or yarn (for package management)
+
+Getting Started
+Installation
+Clone the repository:
+
+bash
+Copy
+Edit
+git clone https://github.com/your-username/employwise-app.git
+cd employwise-app
+Install dependencies:
+
+bash
+Copy
+Edit
+npm install
+or
+
+bash
+Copy
+Edit
+yarn
+Configure Tailwind CSS (if not already done):
+
+Check that tailwind.config.js has the correct content paths (e.g., ./src/**/*.{js,jsx,ts,tsx}).
+
+Verify that @tailwind base; @tailwind components; @tailwind utilities; are added to src/index.css.
+
+Running Locally
+Start the development server:
+
+bash
+Copy
+Edit
+npm start
+This should open the app in your browser at http://localhost:3000.
+
+Project Structure
+pgsql
+Copy
+Edit
+employwise-app/
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+├── public/
+│   └── index.html
+└── src/
+    ├── App.js
+    ├── index.js
+    ├── index.css
+    └── components/
+        ├── Login.js
+        ├── UsersList.js
+        └── EditUser.js
+App.js: Defines the main routes and private route logic.
+
+Login.js: Handles user authentication and token storage.
+
+UsersList.js: Displays a paginated list of users and handles deletion.
+
+EditUser.js: Allows editing user details and changing avatar.
+
+Usage
+Login
+Navigate to /login.
+
+Enter the email: eve.holt@reqres.in and password: cityslicka.
+
+Upon success, the token is stored in localStorage and you’re redirected to /users.
+
+Users List
+Lists users in a responsive grid.
+
+Each user shows an avatar, name, and buttons to Edit or Delete.
+
+Pagination controls to move between pages.
+
+Edit User
+Updates user details via PUT /api/users/{id}.
+
+Change First Name, Last Name, Email, and Avatar.
+
+Avatar Update is simulated locally; the new avatar is stored in localStorage and displayed on the Users List page.
+
+Delete User
+Removes a user via DELETE /api/users/{id}.
+
+The user is also removed from the local state to update the UI immediately.
+
+Avatar Updates
+Since Reqres doesn’t store avatars, we save the updated avatar in localStorage.
+
+If a user has a locally updated avatar, it overrides the default one from the API.
+
+Scripts
+npm start: Starts the development server on http://localhost:3000.
+
+npm run build: Builds the application for production.
+
+npm test: Runs any tests (if configured).
+
+Additional Notes
+Token Expiration: Reqres tokens do not expire by default. If you want to handle expiration, you’ll need to implement custom logic.
+
+Hosting: You can deploy this project to services like Vercel, Netlify, or Heroku.
+
+License
+This project is open-source for demonstration and educational purposes. Use it as a reference or a starting point for your own projects.
+
